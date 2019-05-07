@@ -137,3 +137,9 @@ $(GENERATED_FILES): %: %.in
 		-e 's|[@]bindir[@]|$(BINDIR)|g' \
 		-e 's|[@]kata-agent[@]|$(TARGET)|g' \
 		"$<" > "$@"
+
+.PHONY: initrd
+initrd:
+	@dracut --conf /dev/null --confdir dracut.conf.d \
+		--include initramfs-overlay / \
+		--force kata-containers-initrd.img
