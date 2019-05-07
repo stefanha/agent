@@ -1318,7 +1318,7 @@ func realMain() error {
 		running:    false,
 		// pivot_root won't work for init, see
 		// Documention/filesystem/ramfs-rootfs-initramfs.txt
-		noPivotRoot:    os.Getpid() == 1,
+		noPivotRoot:    true, //os.Getpid() == 1,
 		subreaper:      r,
 		pciDeviceMap:   make(map[string]string),
 		deviceWatchers: make(map[string](chan string)),
